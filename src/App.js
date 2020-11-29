@@ -3,6 +3,7 @@ import { CssBaseline, Grid, ThemeProvider } from "@material-ui/core";
 import { HomeComponent } from "./components/home/home";
 import { NavbarComponent } from "./components/navbar/navbar";
 import { theme } from "./theme";
+import { SidebarComponent } from "./components/sidebar/sidebar";
 
 export class App extends React.Component {
   render() {
@@ -11,7 +12,9 @@ export class App extends React.Component {
         <CssBaseline />
         <NavbarComponent />
         <Grid container>
-          <Grid item xs={1}></Grid>
+          <Grid item xs={2}>
+            <SidebarComponent />
+          </Grid>
           <Grid item xs={"auto"}>
             <main
               style={{
