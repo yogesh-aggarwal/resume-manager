@@ -1,3 +1,4 @@
+import React from "react"
 import { HomeComponent } from "./components/home";
 
 export class App extends React.Component {
