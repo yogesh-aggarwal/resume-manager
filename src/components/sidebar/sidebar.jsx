@@ -1,20 +1,21 @@
 import { List, ListItem, ListItemText, ListSubheader } from "@material-ui/core";
 import React from "react";
 import "./sidebar.scss";
+import { resumes, currentResume } from "../../state/global";
 
 export class SidebarComponent extends React.Component {
   state = {
-    resumes: [
-      "Mobile Developer",
-      "Frontend Developer",
-      "Backend Developer",
-      "Python Developer",
-    ],
+    resumes: [],
     currentResume: "",
   };
 
   componentDidMount() {
-    this.setState({ currentResume: this.state.resumes[0] });
+    resumes.subscribe((resumes) => {
+      this.setState({ resumes: resumes });
+    });
+    currentResume.subscribe((currentResume) => {
+      this.setState({ currentResume: currentResume });
+    });
   }
 
   handleResumeChange(name) {
