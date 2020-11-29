@@ -9,14 +9,14 @@ export class NavbarComponent extends React.Component {
         <Toolbar>
           <div className="bar">
             <div className="intro">
-              <IconButton edge="start" color="inherit" disableRipple="true">
-                <i class="las la-file-pdf"></i>
+              <IconButton edge="start" color="inherit" disableRipple={true}>
+                <i className="las la-file-pdf"></i>
               </IconButton>
               <Typography variant="h6">Resume Manager</Typography>
             </div>
 
             <IconButton edge="start" color="inherit">
-              <i class="las la-bell"></i>
+              <i className="las la-bell"></i>
             </IconButton>
           </div>
         </Toolbar>

@@ -1,6 +1,7 @@
-.resume-select {
-  display: flex;
-  justify-content: flex-end;
+.container {
+  padding: 0 5vw;
 
-  margin-top: 1rem;
+  .resume-select {
+    margin: 1rem 0;
+  }
 }
