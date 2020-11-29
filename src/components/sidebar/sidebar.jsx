@@ -17,19 +17,31 @@ export class SidebarComponent extends React.Component {
     this.setState({ currentResume: this.state.resumes[0] });
   }
 
+  handleResumeChange(name) {
+    this.setState({ currentResume: name });
+    console.log(`Current Resume ${this.state.currentResume}`);
+  }
+
   render() {
     return (
       <div className="sidebar">
         <List
           component="nav"
-          subheader={<ListSubheader>Nested List Items</ListSubheader>}
+          subheader={<ListSubheader>Resumes</ListSubheader>}
         >
-          <ListItem button>
-            <ListItemText primary="Sent mail" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="Drafts" />
-          </ListItem>
+          {this.state.resumes.map((name) => {
+            return (
+              <ListItem
+                button
+                selected={this.state.currentResume === name}
+                onClick={() => {
+                  this.handleResumeChange(name);
+                }}
+              >
+                <ListItemText primary={name} />
+              </ListItem>
+            );
+          })}
         </List>
       </div>
     );
