@@ -4,7 +4,7 @@ import { resumes, currentResume } from "../../state/global";
 
 export class HomeComponent extends React.Component {
   state = {
-    currentResume: "",
+    currentResume: {},
     resumes: "",
   };
 
@@ -13,11 +13,13 @@ export class HomeComponent extends React.Component {
       this.setState({ resumes: resumes });
     });
     currentResume.subscribe((currentResume) => {
-      this.setState({ currentResume: currentResume });
+      this.setState({
+        currentResume: resumes.value[currentResume],
+      });
     });
   }
 
   render() {
-    return <div className="container">{this.state.currentResume}</div>;
+    return <div className="container">{this.state.currentResume.name}</div>;
   }
 }

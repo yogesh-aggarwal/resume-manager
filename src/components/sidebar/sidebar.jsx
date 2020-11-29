@@ -11,7 +11,7 @@ export class SidebarComponent extends React.Component {
 
   componentDidMount() {
     resumes.subscribe((resumes) => {
-      this.setState({ resumes: resumes });
+      this.setState({ resumes: Object.keys(resumes) });
     });
     currentResume.subscribe((currentResume) => {
       this.setState({ currentResume: currentResume });
