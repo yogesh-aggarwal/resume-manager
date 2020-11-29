@@ -19,8 +19,7 @@ export class SidebarComponent extends React.Component {
   }
 
   handleResumeChange(name) {
-    this.setState({ currentResume: name });
-    console.log(`Current Resume ${this.state.currentResume}`);
+    currentResume.next(name);
   }
 
   render() {
@@ -35,6 +34,7 @@ export class SidebarComponent extends React.Component {
               <ListItem
                 button
                 selected={this.state.currentResume === name}
+                key={name}
                 onClick={() => {
                   this.handleResumeChange(name);
                 }}
