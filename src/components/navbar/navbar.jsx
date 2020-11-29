@@ -1,7 +1,10 @@
 import {
   AppBar,
-  Button,
+  FormControl,
   IconButton,
+  InputLabel,
+  MenuItem,
+  Select,
   Toolbar,
   Typography,
 } from "@material-ui/core";
@@ -13,13 +16,21 @@ export class NavbarComponent extends React.Component {
     return (
       <AppBar position="static">
         <Toolbar>
-          <div className="intro">
-            <IconButton edge="start" color="inherit" disableRipple="true">
-              <i class="las la-file-pdf"></i>
-            </IconButton>
-            <Typography variant="h6">Resume Manager</Typography>
+          <div className="bar">
+            <div className="intro">
+              <IconButton edge="start" color="inherit" disableRipple="true">
+                <i class="las la-file-pdf"></i>
+              </IconButton>
+              <Typography variant="h6">Resume Manager</Typography>
+            </div>
+
+            <FormControl variant="outlined" style={{ color: "#fff" }}>
+              <InputLabel>Age</InputLabel>
+              <Select value={10} onChange={() => {}} label="Age">
+                <MenuItem>Python Developer</MenuItem>
+              </Select>
+            </FormControl>
           </div>
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     );

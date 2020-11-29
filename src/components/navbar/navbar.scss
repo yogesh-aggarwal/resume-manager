@@ -1,0 +1,11 @@
+@import "../../styles/tools";
+
+.bar {
+  @include center();
+  justify-content: space-between;
+  width: 100%;
+
+  .intro {
+    @include center();
+  }
+}
