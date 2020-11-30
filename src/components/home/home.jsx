@@ -5,7 +5,7 @@ import { resumes, currentResume } from "../../state/global";
 export class HomeComponent extends React.Component {
   state = {
     currentResume: {},
-    resumes: "",
+    resumes: {},
   };
 
   componentDidMount() {
