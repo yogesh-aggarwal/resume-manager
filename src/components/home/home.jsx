@@ -34,6 +34,7 @@ export class HomeComponent extends React.Component {
   }
 
   handleIsAutoUpdateChange($event) {
+    this.updateCurrentResumeGlobally();
     this.setState({ isAutoUpdate: $event.target.checked });
   }
 
