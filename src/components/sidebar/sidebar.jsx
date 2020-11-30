@@ -1,25 +1,25 @@
 import { List, ListItem, ListItemText, ListSubheader } from "@material-ui/core";
 import React from "react";
 import "./sidebar.scss";
-import { resumes, currentResume } from "../../state/global";
+import { resumes, currentResumeId } from "../../state/global";
 
 export class SidebarComponent extends React.Component {
   state = {
     resumes: [],
-    currentResume: "",
+    currentResumeId: "",
   };
 
   componentDidMount() {
     resumes.subscribe((resumes) => {
-      this.setState({ resumes: Object.keys(resumes) });
+      this.setState({ resumes: Object.values(resumes) });
     });
-    currentResume.subscribe((currentResume) => {
+    currentResumeId.subscribe((currentResume) => {
       this.setState({ currentResume: currentResume });
     });
   }
 
   handleResumeChange(name) {
-    currentResume.next(name);
+    currentResumeId.next(name);
   }
 
   render() {
@@ -29,17 +29,17 @@ export class SidebarComponent extends React.Component {
           component="nav"
           subheader={<ListSubheader>Resumes</ListSubheader>}
         >
-          {this.state.resumes.map((name) => {
+          {this.state.resumes.map((resume) => {
             return (
               <ListItem
                 button
-                selected={this.state.currentResume === name}
-                key={name}
+                selected={this.state.currentResumeId === resume.id}
+                key={currentResumeId.id}
                 onClick={() => {
-                  this.handleResumeChange(name);
+                  this.handleResumeChange(currentResumeId.id);
                 }}
               >
-                <ListItemText primary={name} />
+                <ListItemText primary={resume.role} />
               </ListItem>
             );
           })}

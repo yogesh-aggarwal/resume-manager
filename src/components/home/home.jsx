@@ -1,11 +1,13 @@
 import React from "react";
 import "./home.scss";
-import { resumes, currentResume } from "../../state/global";
+import { resumes, currentResumeId } from "../../state/global";
 import {
   CircularProgress,
   Container,
   Divider,
   FormControl,
+  FormControlLabel,
+  Switch,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -14,87 +16,129 @@ export class HomeComponent extends React.Component {
   state = {
     currentResume: null,
     resumes: {},
+    isAutoUpdate: true,
   };
 
   componentDidMount() {
     resumes.subscribe((resumes) => {
       this.setState({ resumes: resumes });
     });
-    currentResume.subscribe((currentResume) => {
+    currentResumeId.subscribe((currentResume) => {
       this.setState({
         currentResume: resumes.value[currentResume],
       });
     });
   }
 
+  handleIsAutoUpdateChange($event) {
+    this.setState({ autoUpdate: $event.target.checked });
+  }
+
+  handleFormChange($event, attrib) {
+    let resume = this.state.currentResume;
+    resume[attrib] = $event.target.value;
+    this.setState({ currentResume: resume });
+
+    let newResumes = resumes.value;
+    newResumes[this.state.currentResume.id] = resume;
+    resumes.next(newResumes);
+  }
+
+  handleFormAutoUpdate($event, name) {
+    if (!this.state.isAutoUpdate) return;
+    this.handleFormChange($event, name);
+  }
+
   render() {
     const resume = this.state.currentResume;
     if (!resume) return <CircularProgress />;
     return (
-      <Container>
-        <Typography variant="h6" color="secondary">
-          Resume for
-        </Typography>
-        <Typography variant="h4">{resume.role}</Typography>
-        <br />
-        <Divider />
-        <br />
-        <FormControl fullWidth>
-          <Typography variant="h6">Personal Information</Typography>
+      <div className="home">
+        <Container>
+          <div className="header">
+            <div className="intro">
+              <Typography variant="h6" color="secondary">
+                Resume for
+              </Typography>
+              <Typography variant="h4">{resume.role}</Typography>
+            </div>
+            <div className="actions">
+              <FormControlLabel
+                control={
+                  <Switch
+                    checked={this.state.isAutoUpdate}
+                    onChange={this.handleIsAutoUpdateChange.bind(this)}
+                    name="autoUpdate"
+                    label
+                  />
+                }
+                label="Auto Update"
+              />
+            </div>
+          </div>
           <br />
-          <TextField
-            autoFocus
-            label="My Name"
-            variant="outlined"
-            defaultValue={resume.name}
-          />
+          <Divider />
           <br />
-          <TextField
-            label="Role"
-            variant="outlined"
-            defaultValue={resume.role}
-          />
-          <br />
-          <TextField
-            multiline
-            rows={5}
-            inputProps={{
-              maxLength: 270,
-            }}
-            label="About Me"
-            variant="outlined"
-            defaultValue={resume.roleDesc}
-          />
-          <br />
-          <TextField
-            label="Address"
-            variant="outlined"
-            defaultValue={resume.address}
-          />
-          <br />
-          <TextField
-            label="Email"
-            variant="outlined"
-            defaultValue={resume.email}
-          />
-          <br />
-          <TextField
-            inputProps={{
-              maxLength: 10,
-            }}
-            type="number"
-            label="Phone Number"
-            variant="outlined"
-            defaultValue={resume.phoneNumber}
-            onInput={(e) => {
-              e.target.value = Math.max(0, parseInt(e.target.value))
-                .toString()
-                .slice(0, 10);
-            }}
-          />
-          <br />
-        </FormControl>
-      </Container>
+          <FormControl fullWidth>
+            <Typography variant="h6">Personal Information</Typography>
+            <br />
+            <TextField
+              autoFocus
+              label="My Name"
+              variant="outlined"
+              onChange={($event) => {
+                this.handleFormAutoUpdate($event, "name");
+              }}
+              defaultValue={resume.name}
+            />
+            <br />
+            <TextField
+              label="Role"
+              variant="outlined"
+              defaultValue={resume.role}
+            />
+            <br />
+            <TextField
+              multiline
+              rows={3}
+              inputProps={{
+                maxLength: 270,
+              }}
+              label="About Me"
+              variant="outlined"
+              defaultValue={resume.roleDesc}
+            />
+            <br />
+            <TextField
+              label="Address"
+              variant="outlined"
+              defaultValue={resume.address}
+            />
+            <br />
+            <TextField
+              label="Email"
+              variant="outlined"
+              defaultValue={resume.email}
+            />
+            <br />
+            <TextField
+              inputProps={{
+                maxLength: 10,
+              }}
+              type="number"
+              label="Phone Number"
+              variant="outlined"
+              defaultValue={resume.phoneNumber}
+              onInput={(e) => {
+                e.target.value = Math.max(0, parseInt(e.target.value))
+                  .toString()
+                  .slice(0, 10);
+              }}
+            />
+            <br />
+          </FormControl>
+        </Container>
+      </div>
     );
   }
 }

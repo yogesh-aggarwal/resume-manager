@@ -1,5 +1,5 @@
 import React from "react";
-import { currentResume, resumes } from "../../state/global";
+import { currentResumeId, resumes } from "../../state/global";
 
 const primary = "#1c76b3";
 const tools = {
@@ -150,7 +150,7 @@ export class PreviewComponent extends React.Component {
   };
 
   componentDidMount() {
-    currentResume.subscribe((currentResume) => {
+    currentResumeId.subscribe((currentResume) => {
       this.setState({ currentResume: resumes.value[currentResume] });
     });
   }

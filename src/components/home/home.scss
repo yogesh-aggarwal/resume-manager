@@ -1,6 +1,13 @@
 @import "../../styles/tools";
 
 .home {
-  overflow-y: auto;
-  
+  .header {
+    @include center();
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .actions {
+      @include center();
+    }
+  }
 }
