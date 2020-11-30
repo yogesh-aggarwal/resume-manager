@@ -21,7 +21,9 @@ export class App extends React.Component {
           <Grid item xs={6}>
             <main
               style={{
-                margin: "1rem",
+                maxHeight: "calc(100vh - 4rem)",
+                overflow: "auto",
+                padding: "1rem",
               }}
             >
               <HomeComponent />
