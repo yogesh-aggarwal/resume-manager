@@ -95,6 +95,9 @@ export class HomeComponent extends React.Component {
             <TextField
               label="Role"
               variant="outlined"
+              onChange={($event) => {
+                this.handleFormAutoUpdate($event, "role");
+              }}
               defaultValue={resume.role}
             />
             <br />
@@ -106,18 +109,27 @@ export class HomeComponent extends React.Component {
               }}
               label="About Me"
               variant="outlined"
+              onChange={($event) => {
+                this.handleFormAutoUpdate($event, "roleDesc");
+              }}
               defaultValue={resume.roleDesc}
             />
             <br />
             <TextField
               label="Address"
               variant="outlined"
+              onChange={($event) => {
+                this.handleFormAutoUpdate($event, "address");
+              }}
               defaultValue={resume.address}
             />
             <br />
             <TextField
               label="Email"
               variant="outlined"
+              onChange={($event) => {
+                this.handleFormAutoUpdate($event, "email");
+              }}
               defaultValue={resume.email}
             />
             <br />
@@ -129,10 +141,11 @@ export class HomeComponent extends React.Component {
               label="Phone Number"
               variant="outlined"
               defaultValue={resume.phoneNumber}
-              onInput={(e) => {
-                e.target.value = Math.max(0, parseInt(e.target.value))
+              onInput={($event) => {
+                $event.target.value = Math.max(0, parseInt($event.target.value))
                   .toString()
                   .slice(0, 10);
+                this.handleFormAutoUpdate($event, "phoneNumber");
               }}
             />
             <br />
