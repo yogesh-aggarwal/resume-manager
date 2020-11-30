@@ -9,6 +9,8 @@ import {
   FormControl,
   FormControlLabel,
   Switch,
+  Tab,
+  Tabs,
   TextField,
   Typography,
 } from "@material-ui/core";
@@ -56,6 +58,7 @@ export class HomeComponent extends React.Component {
     return (
       <div className="home">
         <Container>
+          {/* Header */}
           <div className="header">
             <div className="intro">
               <Typography variant="h6" color="secondary">
@@ -76,15 +79,21 @@ export class HomeComponent extends React.Component {
                 label="Auto Update"
               />
               {!this.state.isAutoUpdate && (
-                <Button onClick={this.updateCurrentResumeGlobally.bind(this)}>
+                <Button
+                  onClick={this.updateCurrentResumeGlobally.bind(this)}
+                  color="secondary"
+                >
                   Update
                 </Button>
               )}
             </div>
           </div>
+
           <br />
           <Divider />
           <br />
+
+          {/* Form Control */}
           <FormControl fullWidth>
             <Typography variant="h6">Personal Information</Typography>
             <br />
