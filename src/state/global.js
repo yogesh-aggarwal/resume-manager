@@ -9,7 +9,7 @@ export const resumes = new BehaviorSubject({
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et ligula condimentum, congue erat at, sollicitudin tortor. Duis dui arcu, volutpat vitae ornare ac, facilisis non libero. In at bibendum lectus. Nulla sit amet congue justo",
     address: "Lorem ipsum dolor sit amet, consectetur adipiscing",
     email: "example@example.com",
-    phoneNumber: "92xxxxxx04",
+    phoneNumber: 1234567895,
     skills: ["lorem", "ipsum", "dolor", "sit", "amet", "consectetur"],
     softwares: ["lorem", "ipsum", "dolor", "sit", "amet", "consectetur"],
     languages: ["lorem", "ipsum"],

@@ -2,6 +2,7 @@ import React from "react";
 import "./home.scss";
 import { resumes, currentResume } from "../../state/global";
 import {
+  CircularProgress,
   Container,
   Divider,
   FormControl,
@@ -11,7 +12,7 @@ import {
 
 export class HomeComponent extends React.Component {
   state = {
-    currentResume: {},
+    currentResume: null,
     resumes: {},
   };
 
@@ -28,6 +29,7 @@ export class HomeComponent extends React.Component {
 
   render() {
     const resume = this.state.currentResume;
+    if (!resume) return <CircularProgress />;
     return (
       <Container>
         <Typography variant="h6" color="secondary">
@@ -40,20 +42,57 @@ export class HomeComponent extends React.Component {
         <FormControl fullWidth>
           <Typography variant="h6">Personal Information</Typography>
           <br />
-          <TextField label="My Name" variant="outlined" value={resume.name} />
+          <TextField
+            autoFocus
+            label="My Name"
+            variant="outlined"
+            defaultValue={resume.name}
+          />
           <br />
-          <TextField label="Role" variant="outlined" value={resume.role} />
+          <TextField
+            label="Role"
+            variant="outlined"
+            defaultValue={resume.role}
+          />
           <br />
-          <TextField label="Address" variant="outlined" value={resume.role} />
+          <TextField
+            multiline
+            rows={5}
+            inputProps={{
+              maxLength: 270,
+            }}
+            label="About Me"
+            variant="outlined"
+            defaultValue={resume.roleDesc}
+          />
           <br />
+          <TextField
+            label="Address"
+            variant="outlined"
+            defaultValue={resume.address}
+          />
           <br />
-          <Typography variant="h6">Personal Information</Typography>
+          <TextField
+            label="Email"
+            variant="outlined"
+            defaultValue={resume.email}
+          />
           <br />
-          <TextField label="My Name" variant="outlined" value={resume.name} />
+          <TextField
+            inputProps={{
+              maxLength: 10,
+            }}
+            type="number"
+            label="Phone Number"
+            variant="outlined"
+            defaultValue={resume.phoneNumber}
+            onInput={(e) => {
+              e.target.value = Math.max(0, parseInt(e.target.value))
+                .toString()
+                .slice(0, 10);
+            }}
+          />
           <br />
-          <TextField label="Role" variant="outlined" value={resume.role} />
-          <br />
-          <TextField label="Address" variant="outlined" value={resume.role} />
         </FormControl>
       </Container>
     );
