@@ -23,8 +23,8 @@ const styles = {
     background: "#fff",
     color: "#071a52",
     fontFamily: "Poppins",
-    width: "71vh",
-    height: "100vh",
+    width: "39.7rem",
+    height: "56rem",
     padding: "0 1.5rem",
   },
   typography: {

@@ -1,6 +1,12 @@
 import React from "react";
 import "./home.scss";
 import { resumes, currentResume } from "../../state/global";
+import {
+  Container,
+  FormControl,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 
 export class HomeComponent extends React.Component {
   state = {
@@ -20,6 +26,17 @@ export class HomeComponent extends React.Component {
   }
 
   render() {
-    return <div className="container">{this.state.currentResume.role}</div>;
+    return (
+      <Container>
+        <Typography variant="h6" color="secondary">
+          Resume for
+        </Typography>
+        <Typography variant="h4">{this.state.currentResume.role}</Typography>
+        <br />
+        <FormControl fullWidth>
+          <TextField label="My Name" variant="outlined" />
+        </FormControl>
+      </Container>
+    );
   }
 }
