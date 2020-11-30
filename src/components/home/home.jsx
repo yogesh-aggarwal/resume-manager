@@ -20,6 +20,6 @@ export class HomeComponent extends React.Component {
   }
 
   render() {
-    return <div className="container">{this.state.currentResume.name}</div>;
+    return <div className="container">{this.state.currentResume.role}</div>;
   }
 }

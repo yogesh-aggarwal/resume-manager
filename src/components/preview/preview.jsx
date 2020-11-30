@@ -27,6 +27,7 @@ const styles = {
       borderBottom: `1px solid ${primary}`,
       borderRight: `5px solid ${primary}`,
       fontSize: "0.9rem",
+      marginBottom: "0.7rem",
     },
     sHeading: {
       fontWeight: "600",
@@ -112,7 +113,7 @@ const styles = {
     marginBottom: "0.7rem",
   },
   sectionSHeading: {
-    fontSize: "0.9rem",
+    fontSize: "0.8rem",
     marginTop: "0",
   },
   date: {
@@ -155,102 +156,133 @@ export class PreviewComponent extends React.Component {
       <div style={styles.body}>
         <div style={styles.top}>
           <div>
-            <div style={styles.name}>$00</div>
-            <div style={styles.role}>$01</div>
+            <div style={styles.name}>{resume.name}</div>
+            <div style={styles.role}>{resume.role}</div>
           </div>
-          <div style={styles.description}>$02</div>
+          <div style={styles.description}>{resume.roleDesc}</div>
         </div>
         <div style={styles.bottom}>
           <div>
             <section style={styles.section}>
               <div style={styles.typography.heading}>Personal Information</div>
               <div style={styles.typography.sHeading}>Address</div>
-              <div style={styles.typography.xs}>$03</div>
+              <div style={styles.typography.xs}>{resume.address}</div>
               <div style={styles.typography.sHeading}>Email Address</div>
-              <div style={styles.typography.xs}>$04</div>
+              <div style={styles.typography.xs}>{resume.email}</div>
               <div style={styles.typography.sHeading}>Phone Number</div>
-              <div style={styles.typography.xs}>$05</div>
+              <div style={styles.typography.xs}>{resume.phoneNumber}</div>
             </section>
             <section style={styles.section}>
               <div style={styles.typography.heading}>Skils</div>
-              <div style={{ ...styles.typography.xs, ...styles.spacing.m4 }}>
-                $06
-              </div>
+              {resume.skills.map((skill) => {
+                return (
+                  <div
+                    style={{ ...styles.typography.xs, ...styles.spacing.m2 }}
+                  >
+                    {skill}
+                  </div>
+                );
+              })}
             </section>
             <section style={styles.section}>
               <div style={styles.typography.heading}>Software</div>
-              <div style={{ ...styles.typography.xs, ...styles.spacing.m4 }}>
-                $07
-              </div>
+              {resume.softwares.map((software) => {
+                return (
+                  <div
+                    style={{ ...styles.typography.xs, ...styles.spacing.m2 }}
+                  >
+                    {software}
+                  </div>
+                );
+              })}
             </section>
             <section style={styles.section}>
               <div style={styles.typography.heading}>Languages</div>
-              <div style={{ ...styles.typography.xs, ...styles.spacing.m4 }}>
-                $08
-              </div>
+              {resume.languages.map((language) => {
+                return (
+                  <div
+                    style={{ ...styles.typography.xs, ...styles.spacing.m2 }}
+                  >
+                    {language}
+                  </div>
+                );
+              })}
             </section>
           </div>
           <div style={styles.right}>
             <section style={styles.section}>
               <div style={styles.typography.heading}>Projects</div>
-              $09
-              <section style={styles.sectionDated}>
-                <div style={styles.date}>Folder Prettifier</div>
-                <div>
-                  <ul style={styles.ul}>
-                    <li style={styles.li}>Developed Using WinForms C#.</li>
-                    <li style={styles.li}>Scheduling was the toughest part.</li>
-                  </ul>
-                </div>
-              </section>
+              {resume.projects.map((project) => {
+                return (
+                  <section style={styles.sectionDated}>
+                    <div style={styles.date}>{project.name}</div>
+                    <div>
+                      <ul style={styles.ul}>
+                        {project.bullets.map((bullet) => {
+                          return <li style={styles.li}>{bullet}</li>;
+                        })}
+                      </ul>
+                    </div>
+                  </section>
+                );
+              })}
             </section>
 
             <section style={styles.section}>
               <div style={styles.typography.heading}>Education</div>
-              $10
-              <section style={styles.sectionDated}>
-                <div style={styles.date}>2012-2020 (Present)</div>
-                <div>
-                  <div style={styles.sectionSHeading}>
-                    Masters of Computers, Stanford University
-                  </div>
-                  <div
-                    style={{
-                      ...styles.typography.xs,
-                      ...styles.shortDesc,
-                    }}
-                  >
-                    Although
-                  </div>
-                  <ul style={styles.ul}>
-                    <li style={styles.li}>
-                      Member of Student Association of Computer Science &
-                      Development.
-                    </li>
-                    <li style={styles.li}>Two</li>
-                    <li style={styles.li}>Three</li>
-                    <li style={styles.li}>Four</li>
-                  </ul>
-                </div>
-              </section>
+              {resume.education.map((education) => {
+                return (
+                  <section style={styles.sectionDated}>
+                    <div style={styles.date}>{education.date}</div>
+                    {education.sections.map((section) => {
+                      return (
+                        <div>
+                          <div
+                            style={{
+                              ...styles.typography.sHeading,
+                              ...styles.sectionSHeading,
+                            }}
+                          >
+                            {section.name}
+                          </div>
+                          {section.name && (
+                            <div
+                              style={{
+                                ...styles.typography.xs,
+                                ...styles.shortDesc,
+                              }}
+                            >
+                              {section.shortDesc}
+                            </div>
+                          )}
+                          <ul style={styles.ul}>
+                            {section.bullets.map((bullet) => {
+                              return <li style={styles.li}>{bullet}</li>;
+                            })}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </section>
+                );
+              })}
             </section>
 
             <section style={styles.section}>
               <div style={styles.typography.heading}>Certifications</div>
-              $11
               <ul style={styles.ul}>
-                <li style={styles.li}>ReactJS Bootcamp</li>
-                <li style={styles.li}>Google Summer of Code</li>
-                <li style={styles.li}>Google Kickstart</li>
+                {resume.certifications.map((certification) => {
+                  return <li style={styles.li}>{certification}</li>;
+                })}
               </ul>
             </section>
 
             <section style={styles.section}>
               <div style={styles.typography.heading}>Interests</div>
-              $12
               <ul style={styles.ul}>
-                <li style={styles.li}>UI/UX Designing</li>
-                <li style={styles.li}>Competitive Programming</li>
+                {resume.interests.map((interest) => {
+                  return <li style={styles.li}>{interest}</li>;
+                })}
               </ul>
             </section>
           </div>
