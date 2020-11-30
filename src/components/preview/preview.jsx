@@ -10,6 +10,10 @@ const tools = {
   },
 };
 const styles = {
+  wrapper: {
+    transform: "scale(.8)",
+    maxHeight: "0",
+  },
   resume: {
     margin: 0,
     padding: 0,
@@ -153,138 +157,142 @@ export class PreviewComponent extends React.Component {
     if (!resume) return <div>Resume not Found!</div>;
 
     return (
-      <div style={styles.resume}>
-        <div style={styles.top}>
-          <div>
-            <div style={styles.name}>{resume.name}</div>
-            <div style={styles.role}>{resume.role}</div>
+      <div style={styles.wrapper}>
+        <div style={styles.resume}>
+          <div style={styles.top}>
+            <div>
+              <div style={styles.name}>{resume.name}</div>
+              <div style={styles.role}>{resume.role}</div>
+            </div>
+            <div style={styles.description}>{resume.roleDesc}</div>
           </div>
-          <div style={styles.description}>{resume.roleDesc}</div>
-        </div>
-        <div style={styles.bottom}>
-          <div>
-            <section style={styles.section}>
-              <div style={styles.typography.heading}>Personal Information</div>
-              <div style={styles.typography.sHeading}>Address</div>
-              <div style={styles.typography.xs}>{resume.address}</div>
-              <div style={styles.typography.sHeading}>Email Address</div>
-              <div style={styles.typography.xs}>{resume.email}</div>
-              <div style={styles.typography.sHeading}>Phone Number</div>
-              <div style={styles.typography.xs}>{resume.phoneNumber}</div>
-            </section>
-            <section style={styles.section}>
-              <div style={styles.typography.heading}>Skils</div>
-              {resume.skills.map((skill) => {
-                return (
-                  <div
-                    style={{ ...styles.typography.xs, ...styles.spacing.m2 }}
-                  >
-                    {skill}
-                  </div>
-                );
-              })}
-            </section>
-            <section style={styles.section}>
-              <div style={styles.typography.heading}>Software</div>
-              {resume.softwares.map((software) => {
-                return (
-                  <div
-                    style={{ ...styles.typography.xs, ...styles.spacing.m2 }}
-                  >
-                    {software}
-                  </div>
-                );
-              })}
-            </section>
-            <section style={styles.section}>
-              <div style={styles.typography.heading}>Languages</div>
-              {resume.languages.map((language) => {
-                return (
-                  <div
-                    style={{ ...styles.typography.xs, ...styles.spacing.m2 }}
-                  >
-                    {language}
-                  </div>
-                );
-              })}
-            </section>
-          </div>
-          <div style={styles.right}>
-            <section style={styles.section}>
-              <div style={styles.typography.heading}>Projects</div>
-              {resume.projects.map((project) => {
-                return (
-                  <section style={styles.sectionDated}>
-                    <div style={styles.date}>{project.name}</div>
-                    <div>
-                      <ul style={styles.ul}>
-                        {project.bullets.map((bullet) => {
-                          return <li style={styles.li}>{bullet}</li>;
-                        })}
-                      </ul>
+          <div style={styles.bottom}>
+            <div>
+              <section style={styles.section}>
+                <div style={styles.typography.heading}>
+                  Personal Information
+                </div>
+                <div style={styles.typography.sHeading}>Address</div>
+                <div style={styles.typography.xs}>{resume.address}</div>
+                <div style={styles.typography.sHeading}>Email Address</div>
+                <div style={styles.typography.xs}>{resume.email}</div>
+                <div style={styles.typography.sHeading}>Phone Number</div>
+                <div style={styles.typography.xs}>{resume.phoneNumber}</div>
+              </section>
+              <section style={styles.section}>
+                <div style={styles.typography.heading}>Skils</div>
+                {resume.skills.map((skill) => {
+                  return (
+                    <div
+                      style={{ ...styles.typography.xs, ...styles.spacing.m2 }}
+                    >
+                      {skill}
                     </div>
-                  </section>
-                );
-              })}
-            </section>
+                  );
+                })}
+              </section>
+              <section style={styles.section}>
+                <div style={styles.typography.heading}>Software</div>
+                {resume.softwares.map((software) => {
+                  return (
+                    <div
+                      style={{ ...styles.typography.xs, ...styles.spacing.m2 }}
+                    >
+                      {software}
+                    </div>
+                  );
+                })}
+              </section>
+              <section style={styles.section}>
+                <div style={styles.typography.heading}>Languages</div>
+                {resume.languages.map((language) => {
+                  return (
+                    <div
+                      style={{ ...styles.typography.xs, ...styles.spacing.m2 }}
+                    >
+                      {language}
+                    </div>
+                  );
+                })}
+              </section>
+            </div>
+            <div style={styles.right}>
+              <section style={styles.section}>
+                <div style={styles.typography.heading}>Projects</div>
+                {resume.projects.map((project) => {
+                  return (
+                    <section style={styles.sectionDated}>
+                      <div style={styles.date}>{project.name}</div>
+                      <div>
+                        <ul style={styles.ul}>
+                          {project.bullets.map((bullet) => {
+                            return <li style={styles.li}>{bullet}</li>;
+                          })}
+                        </ul>
+                      </div>
+                    </section>
+                  );
+                })}
+              </section>
 
-            <section style={styles.section}>
-              <div style={styles.typography.heading}>Education</div>
-              {resume.education.map((education) => {
-                return (
-                  <section style={styles.sectionDated}>
-                    <div style={styles.date}>{education.date}</div>
-                    {education.sections.map((section) => {
-                      return (
-                        <div>
-                          <div
-                            style={{
-                              ...styles.typography.sHeading,
-                              ...styles.sectionSHeading,
-                            }}
-                          >
-                            {section.name}
-                          </div>
-                          {section.name && (
+              <section style={styles.section}>
+                <div style={styles.typography.heading}>Education</div>
+                {resume.education.map((education) => {
+                  return (
+                    <section style={styles.sectionDated}>
+                      <div style={styles.date}>{education.date}</div>
+                      {education.sections.map((section) => {
+                        return (
+                          <div>
                             <div
                               style={{
-                                ...styles.typography.xs,
-                                ...styles.shortDesc,
+                                ...styles.typography.sHeading,
+                                ...styles.sectionSHeading,
                               }}
                             >
-                              {section.shortDesc}
+                              {section.name}
                             </div>
-                          )}
-                          <ul style={styles.ul}>
-                            {section.bullets.map((bullet) => {
-                              return <li style={styles.li}>{bullet}</li>;
-                            })}
-                          </ul>
-                        </div>
-                      );
-                    })}
-                  </section>
-                );
-              })}
-            </section>
-
-            <section style={styles.section}>
-              <div style={styles.typography.heading}>Certifications</div>
-              <ul style={styles.ul}>
-                {resume.certifications.map((certification) => {
-                  return <li style={styles.li}>{certification}</li>;
+                            {section.name && (
+                              <div
+                                style={{
+                                  ...styles.typography.xs,
+                                  ...styles.shortDesc,
+                                }}
+                              >
+                                {section.shortDesc}
+                              </div>
+                            )}
+                            <ul style={styles.ul}>
+                              {section.bullets.map((bullet) => {
+                                return <li style={styles.li}>{bullet}</li>;
+                              })}
+                            </ul>
+                          </div>
+                        );
+                      })}
+                    </section>
+                  );
                 })}
-              </ul>
-            </section>
+              </section>
 
-            <section style={styles.section}>
-              <div style={styles.typography.heading}>Interests</div>
-              <ul style={styles.ul}>
-                {resume.interests.map((interest) => {
-                  return <li style={styles.li}>{interest}</li>;
-                })}
-              </ul>
-            </section>
+              <section style={styles.section}>
+                <div style={styles.typography.heading}>Certifications</div>
+                <ul style={styles.ul}>
+                  {resume.certifications.map((certification) => {
+                    return <li style={styles.li}>{certification}</li>;
+                  })}
+                </ul>
+              </section>
+
+              <section style={styles.section}>
+                <div style={styles.typography.heading}>Interests</div>
+                <ul style={styles.ul}>
+                  {resume.interests.map((interest) => {
+                    return <li style={styles.li}>{interest}</li>;
+                  })}
+                </ul>
+              </section>
+            </div>
           </div>
         </div>
       </div>

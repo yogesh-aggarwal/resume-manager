@@ -11,7 +11,7 @@ export class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {/* <NavbarComponent /> */}
+        <NavbarComponent />
         <Grid container>
           {/* Sidebar */}
           <Grid item xs={2}>
