@@ -10,7 +10,7 @@ const tools = {
   },
 };
 const styles = {
-  body: {
+  resume: {
     margin: 0,
     padding: 0,
     background: "#fff",
@@ -153,7 +153,7 @@ export class PreviewComponent extends React.Component {
     if (!resume) return <div>Resume not Found!</div>;
 
     return (
-      <div style={styles.body}>
+      <div style={styles.resume}>
         <div style={styles.top}>
           <div>
             <div style={styles.name}>{resume.name}</div>
