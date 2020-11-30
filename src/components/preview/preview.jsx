@@ -1,6 +1,4 @@
 import React from "react";
-// import "./preview.module.scss";
-// import { template } from "./template";
 
 const primary = "#1c76b3";
 const tools = {
