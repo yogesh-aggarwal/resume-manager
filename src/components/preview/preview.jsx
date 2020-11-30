@@ -1,4 +1,5 @@
 import React from "react";
+import { currentResume, resumes } from "../../state/global";
 
 const primary = "#1c76b3";
 const tools = {
@@ -136,7 +137,20 @@ const styles = {
 };
 
 export class PreviewComponent extends React.Component {
+  state = {
+    currentResume: null,
+  };
+
+  componentDidMount() {
+    currentResume.subscribe((currentResume) => {
+      this.setState({ currentResume: resumes.value[currentResume] });
+    });
+  }
+
   render() {
+    const resume = this.state.currentResume;
+    if (!resume) return <div>Resume not Found!</div>;
+
     return (
       <div style={styles.body}>
         <div style={styles.top}>
