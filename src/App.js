@@ -4,17 +4,20 @@ import { HomeComponent } from "./components/home/home";
 import { NavbarComponent } from "./components/navbar/navbar";
 import { theme } from "./theme";
 import { SidebarComponent } from "./components/sidebar/sidebar";
+import { PreviewComponent } from "./components/preview/preview";
 
 export class App extends React.Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <NavbarComponent />
+        {/* <NavbarComponent /> */}
         <Grid container>
+          {/* Sidebar */}
           <Grid item xs={2}>
             <SidebarComponent />
           </Grid>
+          {/* Main */}
           <Grid item xs={"auto"}>
             <main
               style={{
@@ -23,6 +26,10 @@ export class App extends React.Component {
             >
               <HomeComponent />
             </main>
+          </Grid>
+          {/* Preview */}
+          <Grid item xs={2}>
+            <PreviewComponent />
           </Grid>
         </Grid>
       </ThemeProvider>

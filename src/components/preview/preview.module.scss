@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+* {
+  font-family: "Poppins";
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #071a52;
+}
+
+html {
+  background: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  width: 71vh;
+  height: 100vh;
+  padding: 0 1.5rem;
+}
+
+body .top {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1.5rem 0;
+}
+
+body .top .about .name {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #1c76b3;
+}
+
+body .top .about .role {
+  margin-top: 0.2rem;
+  font-size: 0.95rem;
+  font-family: "Roboto Slab";
+  font-weight: 600;
+  color: #666666;
+}
+
+body .top .description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 0.6rem;
+  font-style: italic;
+  line-height: 0.8rem;
+}
+
+body .bottom {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 35% auto;
+      grid-template-columns: 35% auto;
+}
+
+body .bottom .heading {
+  font-weight: 700;
+  color: #1c76b3;
+  border-bottom: 1px solid #1c76b3;
+  border-right: 5px solid #1c76b3;
+  font-size: 0.9rem;
+}
+
+body .bottom .sheading {
+  font-weight: 600;
+  font-size: 0.7rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.1rem;
+}
+
+body .bottom .xs {
+  font-size: 0.7rem;
+  line-height: 0.9rem;
+}
+
+body .bottom .s {
+  font-size: 0.8rem;
+  line-height: 0.9rem;
+}
+
+body .bottom .l {
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+}
+
+body .bottom .m1 {
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+}
+
+body .bottom .m2 {
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+body .bottom .m3 {
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+body .bottom .m4 {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+body .bottom section {
+  margin-bottom: 1rem;
+}
+
+body .bottom section .heading {
+  margin-bottom: 0.7rem;
+}
+
+body .bottom section ul {
+  margin: 0;
+  padding: 0;
+  padding-left: 1rem;
+}
+
+body .bottom section ul li {
+  margin: 0;
+  line-height: 1rem;
+  font-size: 0.7rem;
+  margin-bottom: 0.1rem;
+}
+
+body .bottom section.dated {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 25% auto;
+      grid-template-columns: 25% auto;
+  grid-gap: 0.7rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+body .bottom section.dated .date {
+  font-weight: 700;
+  line-height: 1.1rem;
+  font-size: 0.7rem;
+}
+
+body .bottom section.dated .sheading {
+  font-size: 0.9rem;
+  margin-top: 0;
+}
+
+body .bottom section.dated .short-desc {
+  margin-bottom: 0.1rem;
+}
+
+body .bottom .about {
+  border-right: 2px solid #eee;
+  padding-right: 1.5rem;
+}
+
+body .bottom .right {
+  padding-left: 1.5rem;
+}
