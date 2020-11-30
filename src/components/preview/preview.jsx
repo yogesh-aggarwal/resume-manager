@@ -153,6 +153,9 @@ export class PreviewComponent extends React.Component {
     currentResumeId.subscribe((currentResume) => {
       this.setState({ currentResume: resumes.value[currentResume] });
     });
+    resumes.subscribe((resumes) => {
+      this.setState({ currentResume: resumes[currentResumeId.value] });
+    });
   }
 
   render() {
