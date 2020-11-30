@@ -2,6 +2,7 @@ import React from "react";
 import "./home.scss";
 import { resumes, currentResumeId } from "../../state/global";
 import {
+  Button,
   CircularProgress,
   Container,
   Divider,
@@ -31,7 +32,7 @@ export class HomeComponent extends React.Component {
   }
 
   handleIsAutoUpdateChange($event) {
-    this.setState({ autoUpdate: $event.target.checked });
+    this.setState({ isAutoUpdate: $event.target.checked });
   }
 
   handleFormChange($event, attrib) {
@@ -39,14 +40,14 @@ export class HomeComponent extends React.Component {
     resume[attrib] = $event.target.value;
     this.setState({ currentResume: resume });
 
-    let newResumes = resumes.value;
-    newResumes[this.state.currentResume.id] = resume;
-    resumes.next(newResumes);
+    if (!this.state.isAutoUpdate) return;
+    this.updateCurrentResumeGlobally();
   }
 
-  handleFormAutoUpdate($event, name) {
-    if (!this.state.isAutoUpdate) return;
-    this.handleFormChange($event, name);
+  updateCurrentResumeGlobally() {
+    let newResumes = resumes.value;
+    newResumes[this.state.currentResume.id] = this.state.currentResume;
+    resumes.next(newResumes);
   }
 
   render() {
@@ -74,6 +75,11 @@ export class HomeComponent extends React.Component {
                 }
                 label="Auto Update"
               />
+              {!this.state.isAutoUpdate && (
+                <Button onClick={this.updateCurrentResumeGlobally.bind(this)}>
+                  Update
+                </Button>
+              )}
             </div>
           </div>
           <br />
@@ -87,7 +93,7 @@ export class HomeComponent extends React.Component {
               label="My Name"
               variant="outlined"
               onChange={($event) => {
-                this.handleFormAutoUpdate($event, "name");
+                this.handleFormChange($event, "name");
               }}
               defaultValue={resume.name}
             />
@@ -96,7 +102,7 @@ export class HomeComponent extends React.Component {
               label="Role"
               variant="outlined"
               onChange={($event) => {
-                this.handleFormAutoUpdate($event, "role");
+                this.handleFormChange($event, "role");
               }}
               defaultValue={resume.role}
             />
@@ -110,7 +116,7 @@ export class HomeComponent extends React.Component {
               label="About Me"
               variant="outlined"
               onChange={($event) => {
-                this.handleFormAutoUpdate($event, "roleDesc");
+                this.handleFormChange($event, "roleDesc");
               }}
               defaultValue={resume.roleDesc}
             />
@@ -119,7 +125,7 @@ export class HomeComponent extends React.Component {
               label="Address"
               variant="outlined"
               onChange={($event) => {
-                this.handleFormAutoUpdate($event, "address");
+                this.handleFormChange($event, "address");
               }}
               defaultValue={resume.address}
             />
@@ -128,7 +134,7 @@ export class HomeComponent extends React.Component {
               label="Email"
               variant="outlined"
               onChange={($event) => {
-                this.handleFormAutoUpdate($event, "email");
+                this.handleFormChange($event, "email");
               }}
               defaultValue={resume.email}
             />
@@ -145,7 +151,7 @@ export class HomeComponent extends React.Component {
                 $event.target.value = Math.max(0, parseInt($event.target.value))
                   .toString()
                   .slice(0, 10);
-                this.handleFormAutoUpdate($event, "phoneNumber");
+                this.handleFormChange($event, "phoneNumber");
               }}
             />
             <br />
