@@ -18,7 +18,7 @@ export class App extends React.Component {
             <SidebarComponent />
           </Grid>
           {/* Main */}
-          <Grid item xs={"auto"}>
+          <Grid item xs={6}>
             <main
               style={{
                 margin: "1rem",
@@ -28,7 +28,7 @@ export class App extends React.Component {
             </main>
           </Grid>
           {/* Preview */}
-          <Grid item xs={2}>
+          <Grid item xs={4}>
             <PreviewComponent />
           </Grid>
         </Grid>
